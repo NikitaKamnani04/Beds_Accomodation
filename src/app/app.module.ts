@@ -1,20 +1,37 @@
+
+import { AppRoutingModule } from './app-routing.module';
+import { MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReportComponent } from './report/report.component';
+import { CustomerService } from './report/customer.service';
+import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+import {CalendarModule} from 'primeng/calendar';
+import {SliderModule} from 'primeng/slider';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ContextMenuModule} from 'primeng/contextmenu';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {InputTextModule} from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
-import { ToastModule } from 'primeng/toast';
-import { GoogleLoginProvider,SocialLoginModule } from 'angularx-social-login';
-import { AuthGuardService } from './auth-guard.service';
+import { PrimeIcons, MenuItem } from 'primeng/api';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -22,24 +39,29 @@ import { AuthGuardService } from './auth-guard.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
+    TableModule,
+    CalendarModule,
+		SliderModule,
+		DialogModule,
+		MultiSelectModule,
+		ContextMenuModule,
+		DropdownModule,
+		ButtonModule,
+		ToastModule,
+    InputTextModule,
+    ProgressBarModule,
+    HttpClientModule,BrowserAnimationsModule,
+    Ng2SearchPipeModule,
+    ReactiveFormsModule, 
+    FormsModule,
 
     
     ToastModule,
     BrowserAnimationsModule,
-    SocialLoginModule
+ 
   ],
-  providers: [{provide: 'SocialAuthServiceConfig',
-    useValue: {
-      autoLogin: false, 
-      providers: [
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('262091523626-tu5ffnitduakqqanvmf6m84rbg2co5ra.apps.googleusercontent.com') //  client id
-        }
-      ]
-    }
-  },
-    AuthGuardService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

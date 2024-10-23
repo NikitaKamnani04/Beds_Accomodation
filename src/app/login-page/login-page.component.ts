@@ -3,7 +3,7 @@ import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { LoginService } from '../service/login.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
-import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   password:string="";
   rememberMeChecked:boolean=false;
 
-  constructor(private loginService:LoginService,private messageService:MessageService,private router:Router,private socialAuthService:SocialAuthService) { }
+  constructor(private loginService:LoginService,private messageService:MessageService,private router:Router) { }
 
   ngOnInit(): void {
     
@@ -94,10 +94,10 @@ if(localStorage.getItem('rememberMeChecked') == '1'){
     // console.log('login sucessful'); 
   }
 
-  loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then(() => this.router.navigate(['signIn']));
-  }
+  // loginWithGoogle(): void {
+  //   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+  //     .then(() => this.router.navigate(['signIn']));
+  // }
 
   
 
