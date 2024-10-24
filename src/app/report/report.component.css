@@ -198,6 +198,7 @@ width:100%;
 ::ng-deep .p-element .p-datatable-tbody {
 min-height: 250px;
 }
+
 .align-items-center {
     align-items: center !important;
 }

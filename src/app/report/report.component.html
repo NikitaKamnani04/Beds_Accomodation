@@ -4,7 +4,7 @@
 <div class="parent">
     <div data-component="navbar">
         <nav class="navbar p-0 fixed-top">
-            <div class="p-datatable-wrapper" style="min-height:300px; ;">
+            <div class="p-datatable-wrapper">
 
                 <h4 style="margin-left:42%;position: absolute;bottom:20px;"><span class="heading">Report</span></h4>
 
@@ -148,32 +148,32 @@
                 </ng-template>  -->
             <!-- use in ng-template (let-customer) -->
              <!-- [pSelectableRow]="customer" use in tr tag below -->
-            <ng-template pTemplate="body" let-customer>
+            <ng-template pTemplate="body" let-employee>
 
-                <tr>     
+                <tr >     
                     <td>
-                        {{customer.name}}
+                        {{employee.name}}
                     </td>
                     <td>
-                        {{customer.email}}
-                    </td>
-
-                    <td>
-                        {{customer.deptName}}
+                        {{employee.email}}
                     </td>
 
                     <td>
-                        {{customer.loggedInDate | date: 'yyyy-MM-dd' }}
+                        {{employee.deptName}}
+                    </td>
+
+                    <td>
+                        {{employee.loggedInDate | date: 'yyyy-MM-dd' }}
                     </td>
                     <td>
 
-                        {{customer.loggedOutDate| date: 'yyyy-MM-dd'}}
+                        {{employee.loggedOutDate | date: 'yyyy-MM-dd'}}
                     </td>
                     <td>
-                        {{customer.roomNumber}}
+                        {{employee.roomNumber}}
                     </td>
                     <td>
-                        {{customer.bedNumber}}
+                        {{employee.bedNumber}}
                     </td>
                 </tr>
             </ng-template>

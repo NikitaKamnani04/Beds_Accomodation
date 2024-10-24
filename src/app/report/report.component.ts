@@ -17,7 +17,7 @@ type AOA = any[][];
 })
 export class ReportComponent implements OnInit {
 
-  customer: any;
+  employee: any;
   table: any;
   employeeData: any;
   calendar: any | undefined;
@@ -26,7 +26,7 @@ export class ReportComponent implements OnInit {
 
   constructor(private customerService: CustomerService, private datePipe: DatePipe) { }
 
-  data: AOA = [["id", "empId", "name", "email", "deptName", "roomNumber", "bedNumber", "loggedInDate", "loggedOutDate",]];
+  data: AOA = [[]];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'reportJS.xlsx';
 
@@ -109,7 +109,7 @@ export class ReportComponent implements OnInit {
       let out: any = [];
 
       this.employeeData.forEach((item: any) => {
-        let d = this.datePipe.transform(item.loggedOutDate,"yyyy-MM");
+        let d = this.datePipe.transform(item.loggedOutDate, "yyyy-MM");
         if (c == d) {
           out.push(item);
         }
@@ -157,10 +157,29 @@ export class ReportComponent implements OnInit {
 
   export(): void {
     /* generate worksheet */
-    this.employeeData.forEach((item: any) => {
-      this.data.push(Object.values(item).map((value: any) => [value, item[value]]))
+    let itemObject = this.employeeData[0]
+    let itemKeys = Object.keys(itemObject);
+    itemKeys.map((item: any) => {
+      if (item == this.employeeData) {
+        this.data.push(Object.values(item).map((value: any) => [value, item[value]]))
+      }
     })
-    console.log(this.data);
+    // this.employeeData.forEach((item: any) => {
+    //     this.data.push(Object.values(item).map((value: any) => [value, item[value]]))
+    // })
+
+
+
+    // if (item == item.bedNumber) {
+    // }
+
+
+
+
+
+
+
+    // console.log(this.data);
 
     const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(this.data);
 
@@ -176,7 +195,5 @@ export class ReportComponent implements OnInit {
     this.value_1 = undefined;
     this.value = undefined;
   }
-
-
 }
 
