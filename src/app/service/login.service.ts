@@ -12,7 +12,7 @@ export class LoginService {
 
 
   loginData(data:any){
-    return this.http.post(environment.API+'/userLogin',data);
+    return this.http.post(environment.API+'/empLogin',data);
   }
 
 

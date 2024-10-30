@@ -5,28 +5,29 @@
 }
 
 .parent {
-    height: auto;
-    width: 100%;
+    position: relative;
 }
 
 .navbar {
-    height: 7%;
+    /* height: 7%; */
     width: 100%;
-    border-top:1px solid black;
-    border-bottom: 1px solid black;
+    /* border-top: 1px solid rgb(167, 165, 165); */
+    /* border-bottom: 1px solid rgb(167, 165, 165); */
 }
 
 .wp-content {
-    /* margin-top: 60px; */
-    /* margin-left: 75px; */
-height: 99%;
-margin-right:13px;
-margin-top: 60px;
-width:100%;
+    position: relative;
+    top: 50px;
+}
+::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    padding: 20px
+}
+p-table {
+    height: 500px !important;
 }
 
 [data-component=navbar] .navbar {
-    background-color: #fc5800;
+    background-color: #fff;
 }
 
 .p-0 {
@@ -47,13 +48,46 @@ width:100%;
     margin-left: 2%;
 }
 
-.searchBar {
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #fc5800;
+    border-color: #EFF6FF;
+    color: #fff;
+}
+
+::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent;
+    border: 0 none;
+    min-width: 3rem;
+    height: 2.6rem;
+    margin: 0.143rem;
+    transition: box-shadow 0.2s;
+    border-radius: 13%;
+}
+
+::ng-deep .p-dropdown .p-dropdown-trigger {
+    background: transparent;
+    width: 2.3rem;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+::ng-deep .p-dropdown {
+    border: 1px solid #fc5800;
+    border-radius: 6px;
+    color: #6c757d;
+}
+
+
+/* .searchBar {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-}
+} */
 
+.search_bar ::placeholder{
+    font-family: 'Times New Roman', Times, serif;
+}
 #searchQueryInput {
     width: 55%;
     margin-left: 4px;
@@ -75,12 +109,13 @@ width:100%;
     outline: none;
 }
 
-:ng-deep .p-datatable-wrapper{
-    max-height:330px !important;
+:ng-deep .p-datatable-wrapper {
+    max-height: 330px !important;
     position: relative;
 }
+
 :ng-deep .p-inputtext:enabled:hover {
-    border-color: #fc5800;
+    border-color: #fff;
 }
 
 #searchQuerySubmit:hover {
@@ -93,21 +128,14 @@ width:100%;
     border-radius: 10px;
     margin-bottom: 2rem;
 }
-
-::ng-deep .p-datatable.p-datatable-gridlines .p-datatable-tbody > tr > td {
-    border:1px solid black;
+.heading{
+    color: #fc5800;
+    font-size: larger;
+    font-weight: bold;
+    top: 5px;
+    position: relative;
+    font-family:'Times New Roman', Times, serif;
 }
-
-::ng-deep .p-datatable.p-datatable-gridlines .p-paginator-bottom {
-    border-width: 0 1px 1px 1px;
-    border-bottom:2px solid black;
-}
-
-::ng-deep .p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead, .p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-tfoot {
-    background-color: #f8f9fa;
-    border-top: 1px solid black;
-}
-
 
 
 .card {
@@ -134,17 +162,6 @@ width:100%;
     display: flex !important;
 }
 
-/* :hover {
-    background-color: #fc5800;
-  } */
-
- .p-button.p-button-outlined {
-    background-color: white;
-    color: #0a0a0a;
-    height: 40px;
-    margin-left: 17px;
-    top: 8px;
-}
 
 .p-button {
     color: #ffffff;
@@ -154,10 +171,6 @@ width:100%;
     font-size: 1rem;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 6px;
-}
-
-.p-input-icon-left>i:first-of-type {
-    color: #050505;
 }
 
 
@@ -185,18 +198,23 @@ width:100%;
     margin-right: 0.5rem;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 ::ng-deep .p-datatable .p-datatable-thead>tr>th {
     text-align: left;
     padding: 1rem 1rem;
-    border: 1px solid #080808;
+   
     border-width: 0px 0px 0px 0px;
     font-weight: 700;
     color: #343a40;
     /* background: #fc5800; */
     transition: box-shadow 0.2s;
 }
+
 ::ng-deep .p-element .p-datatable-tbody {
-min-height: 250px;
+    min-height: 250px;
 }
 
 .align-items-center {
@@ -227,24 +245,28 @@ min-height: 250px;
 }
 
 .button-14 {
-    background-image: linear-gradient(#f7f8fa, #e7e9ec);
-    /* border-color: #adb1b8 #a2a6ac #8d9096; */
+    background-color: #fff;
     border-style: solid;
     border-width: 1px;
-    border-radius: 7px;
-    border:1px solid black;
-    /* box-shadow: rgba(255, 255, 255, .6) 0 1px 0 inset; */
+    border-radius: 5px;
+    border: 1px solid #fc5800;
     box-sizing: border-box;
-    color: #0f1111;
+    color: #fc5800;
     font-size: 14px;
+    font-weight: 400;
     height: 29px;
     outline: 0;
     padding: 0 11px;
     position: absolute;
-    margin-left: 91%;
-    bottom: 16px;
+    margin-left: 91.5%;
+    bottom: 13px;
     height: 35px;
-    width: 5%;
+    width: 6%;
+}
+
+.bi-box-arrow-right{
+    position: relative;
+    bottom:2px;
 }
 
 .p-paginator {
@@ -253,30 +275,84 @@ min-height: 250px;
     flex-wrap: wrap;
 }
 
-.clear_btn{
-    right:14px;
+.clear_btn {
+    right: 14px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-.export_btn{
-    color: #0a0a0a;
+::ng-deep .p-button-label {
+    font-weight: 400;
+}
+
+.bi-save {
+    margin-bottom: 3px;
+}
+
+.heading[_ngcontent-veo-c93] {
+    color: #fc5800;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.export_btn {
+    color: #fc5800;
     background: #fff;
-    border: 1px solid #0a0a0a;
+    border: 1px solid #fc5800;
     padding: 5px 5px;
     font-size: 1rem;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 5px;
-    right:15px;
-    height:40px;
-    margin-top:8px;
-    width:5%;
+    height: 40px;
+    margin-top: 8px;
+    position: relative;
+    left: 0%;
+    width: 5%;
+    font-family: 'Times New Roman', Times, serif;
+} 
+
+.p-button.p-button-outlined {
+    height: 40px;
+    margin-left: 15px;
+    top: 8px;
+    background-color: #fff !important;
+    color: #fc5800 !important;
+    border: 1px solid #fc5800;
+} 
+
+ button:hover {
+    color: #fff;
+    background-color: #fc5800;
+  } 
+
+  :ng-deep .p-inputtext:enabled:hover {
+    border-color: #fc5800;
 }
 
-.bi-save{
-    margin-bottom:3px;
+  .clear_btn:hover{
+    color: #fff !important;
+    background-color: #fc5800 !important;
 }
+
+.export_btn :hover{
+    color: #fff !important;
+    background-color: #fc5800 !important;
+}
+
+::ng-deep .p-inputtext:enabled:hover {
+    border-color: #fc5800;
+}
+
 
 @media(max-width:1440px) {
 
+    .search{
+        position: relative !important;
+        right:25%;
+    }
+    .search_icon{
+        position: relative !important;
+        /* right: 26% !important; */
+    }
     /* .card_res {
         height: 90%;
         width: 93%;
@@ -404,7 +480,7 @@ min-height: 250px;
         left: -58px;
     }
 
-  /* .room_no1{
+    /* .room_no1{
         width:10% !important;
     }
 

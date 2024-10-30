@@ -16,8 +16,8 @@
 </div>
 
 <form [formGroup]="loginForm" (ngSubmit)="login">
-  <div class="block-right">
-    <div class="text-center" style="position: relative;top: 18%;">
+  <div class="block-right ">
+    <div class="text-center" style="position: relative;top: 25%;">
       <span>
         <h2 class="fw-bold">Sign in</h2>
       </span>
@@ -44,26 +44,26 @@
       <div class="d-flex justify-content-between">
         <div class="form-group mt-3 remember-me">
           <span><input type="checkbox" value="RememberMe" id="rememberMe" [(ngModel)]="rememberMeChecked" [ngModelOptions]=" 
-             {standalone: true}" [checked]="rememberMeChecked" (change)="login()"></span>
+             {standalone: true}"  [checked]="rememberMeChecked" (change)="login()" onclick="setcookie()" autocomplete="off"></span>
           <span class="fw-bold ms-2"><label for="rememberMe">Remember me</label></span>
         </div>
 
-        <div class="form-group mt-3 forgot-password">
+        <!-- <div class="form-group mt-3 forgot-password">
           <span class="ms-1" style="color: 
 #929292;"><label for=""><u>Forgot Password?</u></label></span>
-        </div>
+        </div> -->
       </div>
 
       <div class="d-grid gap-1 col-lg-5 mx-auto rounded-pill mt-4 sign-in">
         <button class="btn  text-white" type="submit" value="Login" (click)="loginEmployee()">Sign in</button>
       </div>
 
-      <div class="text-center mt-4">
+      <!-- <div class="text-center mt-4">
         <hr class="before-or">
         <span class="login-with" style="color: 
 #929292">Or login with</span>
         <hr class="after-or">
-      </div>
+      </div> -->
 
       <!-- <div class="d-grid gap-1 col-lg-5 mx-auto border rounded-pill mt-4 google-btn">
         <button class="btn media-Icon" type="button"  (click)="loginWithGoogle()">
@@ -83,6 +83,13 @@
 
     </div>
 
+    <script type="text/javascript">
+           function setcookie(){
+            var u = document.getElementById('email').value;
+            var p = document.getElementById('password').value;
+            var r = document.getElementById('rememberMe').value;
+           }
+    </script>
   </div>
 </form>
 <p-toast></p-toast>

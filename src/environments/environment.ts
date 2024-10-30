@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 
-  API: 'https://work-management-ashen.vercel.app/api',
+  API: 'https://beds-accomodation.vercel.app/api',
 
 };
 

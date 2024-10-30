@@ -6,6 +6,9 @@ import { Table } from 'primeng/table'
 import * as XLSX from 'xlsx';
 import { ExcelServiceService } from '../excel-service.service';
 import { DatePipe } from '@angular/common';
+import * as $ from 'jquery';
+
+
 type AOA = any[][];
 @ViewChild('p-calendar')
 
@@ -16,17 +19,19 @@ type AOA = any[][];
   providers: [CustomerService, DatePipe],
 })
 export class ReportComponent implements OnInit {
-
+  first = 0;
   employee: any;
   table: any;
   employeeData: any;
   calendar: any | undefined;
   value_1: any;
   value: any;
-
+  page: any;
+  rows: any;
+totalCount:any;
   constructor(private customerService: CustomerService, private datePipe: DatePipe) { }
 
-  data: AOA = [[]];
+  data: AOA = [['Name', 'Email', 'DeptName', 'RoomNumber', 'BedNumber', 'LoggedInDate', 'LoggedOutDate']];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
   fileName: string = 'reportJS.xlsx';
 
@@ -34,6 +39,7 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
     //this.showData();
+
     this.showreportdata();
 
 
@@ -72,7 +78,9 @@ export class ReportComponent implements OnInit {
     //   { label: "Proposal", value: "proposal" }
     // ];
   }
-
+  ngAfterViewInit() {
+   
+  }
   // showData(){
   //   this.customerService.getCustomersLarge().subscribe((res)=>{
   //   this.employeeData=res.data;
@@ -119,15 +127,33 @@ export class ReportComponent implements OnInit {
     }, 1000);
 
   }
-
   showreportdata() {
-    this.customerService.getReportdata().subscribe((res) => {
-      this.employeeData = res;
+    this.customerService.getReportdata({}).subscribe((res: any) => {
+
+      // export to excel
+      this.employeeData = res.data.map((item: any) => {
+        return {
+          name: item.name,
+          email: item.email,
+          deptName: item.deptName,
+          roomNumber: item.roomNumber,
+          bedNumber: item.bedNumber,
+          loggedInDate: item.loggedInDate,
+          loggedOutDate: item.loggedOutDate
+        }
+      });
+
+      // we want count at the same time of data load
+      this.totalCount =res.pagination.totalCount;
+      console.log(this.totalCount);
+      // console.log(this.employeeData);
     })
+
   }
 
   clear(table: Table) {
     table.clear();
+    this.showreportdata();
     this.resetdate();
 
   }
@@ -156,28 +182,10 @@ export class ReportComponent implements OnInit {
 
 
   export(): void {
-    /* generate worksheet */
-    let itemObject = this.employeeData[0]
-    let itemKeys = Object.keys(itemObject);
-    itemKeys.map((item: any) => {
-      if (item == this.employeeData) {
-        this.data.push(Object.values(item).map((value: any) => [value, item[value]]))
-      }
+
+    this.employeeData.forEach((item: any) => {
+      this.data.push(Object.values(item))
     })
-    // this.employeeData.forEach((item: any) => {
-    //     this.data.push(Object.values(item).map((value: any) => [value, item[value]]))
-    // })
-
-
-
-    // if (item == item.bedNumber) {
-    // }
-
-
-
-
-
-
 
     // console.log(this.data);
 
@@ -194,6 +202,26 @@ export class ReportComponent implements OnInit {
   resetdate() {
     this.value_1 = undefined;
     this.value = undefined;
+  }
+
+  paginator(event: any) {
+
+    console.log(event);
+    
+    let data = {
+      page: event.page + 1,
+      limit: event.rows,
+    }
+    console.log(data);
+    this.customerService.getReportdata(data).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this.employeeData = res.data;
+      }, error(err) {
+        console.log(err);
+
+      }
+    })
   }
 }
 

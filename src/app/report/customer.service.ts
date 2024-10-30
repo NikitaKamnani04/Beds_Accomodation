@@ -9,11 +9,13 @@ export class CustomerService {
 
     // getCustomersLarge() {
     //     return this.http.get<any>(environment.apiurl + '/getBookingHistory');
-    
+
     // }
 
-    getReportdata()
-    {
-        return this.http.get('http://localhost:3000/report')
+    getReportdata(data: any) {
+        return this.http.post(environment.API + `/getBookingHistory`, {
+            page: data.page,
+            limit: data.limit
+        });
     }
 }

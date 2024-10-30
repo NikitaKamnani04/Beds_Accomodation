@@ -3,30 +3,34 @@
 
 <div class="parent">
     <div data-component="navbar">
-        <nav class="navbar p-0 fixed-top">
+        <nav class="navbar " >
             <div class="p-datatable-wrapper">
 
-                <h4 style="margin-left:42%;position: absolute;bottom:20px;"><span class="heading">Report</span></h4>
+                <h4 style="margin-left:42%;position: absolute;"><span class="heading">Report</span></h4>
 
-                <button class="button-14  button_res  btn_res btn_res2  btn_res3" role="button" routerLink="/signIn">
-                    <img src="../../assets/Images/images.png"
-                        style="height: 20px;width:20px;left:7px;position: absolute;bottom:6px;">
-                    <span style="position: absolute;right: 10%;bottom:6px;">Log Out</span></button>
+                <button class="button-14  button_res  btn_res btn_res2  btn_res3" role="button" routerLink="">
+                    <span class="me-2"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                            <path fill-rule="evenodd"
+                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg></span>
+                    <span style="">Log Out</span></button>
             </div>
         </nav>
     </div>
-
     <div class="wp-content">
-
-        <p-table class="p-element ng-star-inserted" #dt1 [value]="employeeData" [scrollable]="true"
-            scrollHeight="750px" dataKey="id" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'width':'80vh'}"
+        <p-table class="p-element ng-star-inserted" #dt1 [value]="employeeData" [scrollable]="true" scrollHeight="650px"
+            dataKey="id" [rows]="10" [showCurrentPageReport]="true" [style]="{'width':'100%'}"
             [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-customers p-datatable-gridlines"
-            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [paginator]="false" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             selectionMode="single"
-            [globalFilterFields]="['name','email','deptName','roomNumber','bedNumber','loggedInDate','loggedOutDate']">
+            [globalFilterFields]="['name','email','deptName','roomNumber','bedNumber','loggedInDate','loggedOutDate']"
+            >
 
-            <ng-template pTemplate="caption" >
-                <div class="flex " style="height: 50px;">
+            <ng-template pTemplate="caption">
+                <div class="flex" style="padding:3px">
                     <button pButton label="Clear" class="p-button-outlined paginator_bottom clear_btn"
                         icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
 
@@ -37,27 +41,27 @@
                                 d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1z" />
                         </svg>
                         Export</button>
-                    <span class="p-input-icon-left ml-auto" style="left: 76%;">
-                        <i class="pi pi-search  search_icon  search_icon1"></i>
+                    <span class="p-input-icon-left ml-auto" style="left: 74.2%;">
+                        <i class="pi pi-search  search_icon  search_icon1 "></i>
                         <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
-                            class="search_res  search_bar" placeholder="Search here"
-                            style="height: 40px;margin-top: 10px;position: absolute;border-radius: 7px 7px 7px 7px;border: 1px solid black;float:right;" />
+                            class="search_res search_bar search" placeholder="Search here"
+                            style="height: 40px;margin-top: 10px;position: absolute;border-radius: 7px 7px 7px 7px;float:right;" />
                     </span>
                 </div>
             </ng-template>
 
 
-            <ng-template pTemplate="header" style="min-height: 300px;">
-                <tr>
-                    <th style="width:16%;color: #000000;font-weight: 600;" class="Emp_name  emp_name">Employee Name</th>
-                    <th style="width:16%;color: #000000;font-weight: 600;" class="email email_1">Email</th>
-                    <th style="width:14%;color: #000000;font-weight: 600;" class="dept  dept_1">Department</th>
-                    <th style="width:15%;color: #000000;font-weight: 600;" class="start_date  startdate_1">loggedInDate
+            <ng-template pTemplate="header">
+                <tr style="font-family: 'Times New Roman', Times, serif;">
+                    <th class="Emp_name  emp_name">Employee Name</th>
+                    <th  class="email email_1">Email</th>
+                    <th  class="dept  dept_1">Department</th>
+                    <th  class="start_date  startdate_1">loggedInDate
                     </th>
-                    <th style="width:15%;color: #000000;font-weight: 600;" class="end_date  enddate_1">loggedOutDate
+                    <th  class="end_date  enddate_1">loggedOutDate
                     </th>
-                    <th style="width:12%;color: #000000;font-weight: 600;" class="room_no  room_no1">Room No.</th>
-                    <th style="width:18%;color: #000000;font-weight: 600;" class="bed_no  bed_no1">Bed No.</th> 
+                    <th  class="room_no  room_no1">Room No.</th>
+                    <th  class="bed_no  bed_no1">Bed No.</th>
                 </tr>
                 <tr>
                     <th>
@@ -71,16 +75,16 @@
                         <p-columnFilter type="text" field="deptName"></p-columnFilter>
                     </th>
                     <th>
-
                         <div class="p-d-flex p-jc-between p-ai-center">
                             <!-- loggedInDate
                         <p-columnFilter type="date" field="date" display="menu">
 
                         </p-columnFilter> -->
 
-                            <p-calendar [(ngModel)]="value" view="month" dateFormat="mm/yy" [readonlyInput]="true" (onSelect)="loggedIn()">
-                            </p-calendar >
-                           
+                            <p-calendar [(ngModel)]="value" view="month" dateFormat="mm/yy" [readonlyInput]="true"
+                                (onSelect)="loggedIn()">
+                            </p-calendar>
+
 
                         </div>
                     </th>
@@ -90,8 +94,8 @@
                          <p-columnFilter type="date" field="date" display="menu">
 
                          </p-columnFilter> -->
-                            <p-calendar [(ngModel)]="value_1" view="month" dateFormat="mm/yy" 
-                                [readonlyInput]="true" (onSelect)="loggedOut()"></p-calendar>
+                            <p-calendar [(ngModel)]="value_1" view="month" dateFormat="mm/yy" [readonlyInput]="true"
+                                (onSelect)="loggedOut()"></p-calendar>
                         </div>
                     </th>
 
@@ -147,12 +151,13 @@
                     </tr>
                 </ng-template>  -->
             <!-- use in ng-template (let-customer) -->
-             <!-- [pSelectableRow]="customer" use in tr tag below -->
+            <!-- [pSelectableRow]="customer" use in tr tag below -->
             <ng-template pTemplate="body" let-employee>
 
-                <tr >     
+                <tr style="font-family: 'Times New Roman', Times, serif;">
                     <td>
                         {{employee.name}}
+
                     </td>
                     <td>
                         {{employee.email}}
@@ -184,5 +189,7 @@
             </ng-template>
         </p-table>
 
+        <p-paginator [rows]="rows" [totalRecords]="totalCount" [first]="first"
+            [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginator($event)"></p-paginator>
     </div>
 </div>

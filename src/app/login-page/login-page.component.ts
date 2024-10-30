@@ -3,7 +3,7 @@ import { FormControl, FormControlName, FormGroup } from '@angular/forms';
 import { LoginService } from '../service/login.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -11,25 +11,27 @@ import { Router } from '@angular/router';
   providers:[MessageService]
 })
 export class LoginPageComponent implements OnInit {
+ 
   FieldTextType: any;
-  loginForm!: FormGroup;
+  loginForm!: FormGroup<any>;
   signIn: any;
-
-  email:string="";
+  email:string="" ;
   password:string="";
   rememberMeChecked:boolean=false;
+ 
+  constructor(private loginService:LoginService,private messageService:MessageService,private router:Router,private _cookieService:CookieService) {
+   
+   }
 
-  constructor(private loginService:LoginService,private messageService:MessageService,private router:Router) { }
-
+ 
   ngOnInit(): void {
     
 if(localStorage.getItem('rememberMeChecked') == '1'){
   this.rememberMeChecked =true;
-}else{
-  this.rememberMeChecked =false;
-
 }
-
+else{
+  this.rememberMeChecked =false;
+}
 
    this.loginForm = new FormGroup({
     email:new FormControl(''),
@@ -43,6 +45,11 @@ if(localStorage.getItem('rememberMeChecked') == '1'){
      password: localStorage?.getItem('password')
    })
   }
+  }
+
+
+  onLoggedIn(){
+
   }
   
   toggleFieldTextType() {
@@ -64,6 +71,10 @@ if(localStorage.getItem('rememberMeChecked') == '1'){
       if(this.signIn.success===1)
       {
         this.messageService.add({severity:'success', detail:'Login Sucessful'});
+        setTimeout(() => {
+          this.router.navigateByUrl('/report', {
+          });
+        }, 1000);
       }
      
       else{
@@ -73,10 +84,10 @@ if(localStorage.getItem('rememberMeChecked') == '1'){
           detail:"Invalid Credentials"
         })
       }
-
     })
   }
   
+
 
   login(){
     if(this.rememberMeChecked)
@@ -91,14 +102,35 @@ if(localStorage.getItem('rememberMeChecked') == '1'){
       localStorage.removeItem('password');
       localStorage.setItem('rememberMeChecked','0');
     }
-    // console.log('login sucessful'); 
   }
+
+  
+  // console.log('login sucessful'); 
 
   // loginWithGoogle(): void {
   //   this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
   //     .then(() => this.router.navigate(['signIn']));
   // }
 
+
+  // login() {
+  //   if (this.rememberMeChecked) {
+  //     // Set cookies for email, password, and rememberMeChecked with expiration
+  //     document.cookie = `email=${this.loginForm.value.email}; path=/; max-age=31536000`; // 1 year expiration
+  //     document.cookie = `password=${this.loginForm.value.password}; path=/; max-age=31536000`;
+  //     document.cookie = `rememberMeChecked=1; path=/; max-age=31536000`;
+  //   } else {
+  //     // Clear cookies by setting expiration to past date
+  //     document.cookie = "email=; path=/; max-age=0";
+  //     document.cookie = "password=; path=/; max-age=0";
+  //     document.cookie = "rememberMeChecked=0; path=/; max-age=0";
+  //   }
+  // }
+
+
+  cleanAll() {
+    localStorage.clear();
+  }
   
 
 }

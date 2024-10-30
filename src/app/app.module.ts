@@ -26,6 +26,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
+import {PaginatorModule} from 'primeng/paginator';
+
+
 
 @NgModule({
   declarations: [
@@ -55,10 +58,10 @@ import { FormsModule } from '@angular/forms';
     Ng2SearchPipeModule,
     ReactiveFormsModule, 
     FormsModule,
-
-    
+    PaginatorModule,
     ToastModule,
     BrowserAnimationsModule,
+  
  
   ],
   providers: [],
