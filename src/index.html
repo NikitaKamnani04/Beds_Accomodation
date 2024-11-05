@@ -23,11 +23,65 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- font awesome -->
 
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+//         function setcookie() {
+//           var r = document.getElementById('rememberMe').value;
+//       console.log(r);
+//       console.log(r == 'true');
+      
+      
+//       if (r == true) {
+//         var u = document.getElementById('email').value;
+//         var p = document.getElementById('password').value;
+// console.log(u,p);
+
+//         document.cookie = "email=" + u + ";path=http://localhost:4200";
+//         document.cookie = "password=" + p + ";path=http://localhost:4200";
+//       }
+//       else {
+//         document.cookie = "rememberMe=no;path=http://localhost:4200";
+//         document.cookie = "email=;path=http://localhost:4200";
+//         document.cookie = "password=;path=http://localhost:4200";
+//       }
+//     }
+
+    function getcookiedata() {
+      console.log("hi");
+      
+      var user = getCookie('email');
+      var pswd = getCookie('password');
+      var remember = getCookie('rememberMe');
+
+      document.getElementById('email').value = user;
+      document.getElementById('password').value = pswd;
+      if (remember == 'yes') {
+        document.getElementById('rememberMe').checked = true;
+      } else {
+        document.getElementById('rememberMe').checked = false;
+      }
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  </script>
   <app-root></app-root>
 </body>
 </html>

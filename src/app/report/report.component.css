@@ -162,7 +162,6 @@ p-table {
     display: flex !important;
 }
 
-
 .p-button {
     color: #ffffff;
     background: #070707;
@@ -257,11 +256,13 @@ p-table {
     height: 29px;
     outline: 0;
     padding: 0 11px;
-    position: absolute;
-    margin-left: 91.5%;
-    bottom: 13px;
+    /* position: absolute;
+    margin-left: 81.5%; */
+    /* bottom: 13px; */
     height: 35px;
-    width: 6%;
+    /* width: 6%; */
+    position: absolute;
+    left: 89%;
 }
 
 .bi-box-arrow-right{
@@ -342,16 +343,30 @@ p-table {
     border-color: #fc5800;
 }
 
+/* .pi-search{
+    position: absolute;
+    left: 70%;
+} */
+
+.p-input-icon-left{
+    left: 76.5%;
+}
+
+.clear_btn:focus {
+    outline: 0;
+    box-shadow:none;
+  }
+  
 
 @media(max-width:1440px) {
 
     .search{
         position: relative !important;
-        right:25%;
+        right:47%;
     }
     .search_icon{
         position: relative !important;
-        /* right: 26% !important; */
+        right: 26% !important;
     }
     /* .card_res {
         height: 90%;
@@ -397,6 +412,13 @@ p-table {
         width: 10% !important;
     } */
 
+    .export_btn{
+        width: 7%;
+    }
+
+    .p-input-icon-left{
+        left: 75%;
+    }
 }
 
 @media(max-width:768px) {

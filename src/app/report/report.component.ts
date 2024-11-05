@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import { ExcelServiceService } from '../excel-service.service';
 import { DatePipe } from '@angular/common';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 
 type AOA = any[][];
@@ -29,7 +30,7 @@ export class ReportComponent implements OnInit {
   page: any;
   rows: any;
 totalCount:any;
-  constructor(private customerService: CustomerService, private datePipe: DatePipe) { }
+  constructor(private customerService: CustomerService, private datePipe: DatePipe,private router :Router) { }
 
   data: AOA = [['Name', 'Email', 'DeptName', 'RoomNumber', 'BedNumber', 'LoggedInDate', 'LoggedOutDate']];
   wopts: XLSX.WritingOptions = { bookType: 'xlsx', type: 'array' };
@@ -223,5 +224,17 @@ totalCount:any;
       }
     })
   }
+
+  logout(){
+    this.router.navigate(['']);
+    setTimeout(() => {
+      window.location.reload();
+      
+    }, 250);
+  }
 }
+
+
+
+
 
