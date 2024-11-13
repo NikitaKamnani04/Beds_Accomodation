@@ -19,9 +19,11 @@
     position: relative;
     top: 50px;
 }
-::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+
+::ng-deep .p-datatable .p-datatable-tbody>tr>td {
     padding: 20px
 }
+
 p-table {
     height: 500px !important;
 }
@@ -85,9 +87,10 @@ p-table {
     align-items: center;
 } */
 
-.search_bar ::placeholder{
+.search_bar ::placeholder {
     font-family: 'Times New Roman', Times, serif;
 }
+
 #searchQueryInput {
     width: 55%;
     margin-left: 4px;
@@ -128,13 +131,14 @@ p-table {
     border-radius: 10px;
     margin-bottom: 2rem;
 }
-.heading{
+
+.heading {
     color: #fc5800;
     font-size: larger;
     font-weight: bold;
     top: 5px;
     position: relative;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -204,7 +208,7 @@ p-table {
 ::ng-deep .p-datatable .p-datatable-thead>tr>th {
     text-align: left;
     padding: 1rem 1rem;
-   
+
     border-width: 0px 0px 0px 0px;
     font-weight: 700;
     color: #343a40;
@@ -260,14 +264,14 @@ p-table {
     margin-left: 81.5%; */
     /* bottom: 13px; */
     height: 35px;
-    /* width: 6%; */
+    width: 6%;
     position: absolute;
-    left: 89%;
+    left: 92%;
 }
 
-.bi-box-arrow-right{
+.bi-box-arrow-right {
     position: relative;
-    bottom:2px;
+    bottom: 2px;
 }
 
 .p-paginator {
@@ -304,37 +308,36 @@ p-table {
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 5px;
     height: 40px;
-    margin-top: 8px;
+
     position: relative;
     left: 0%;
     width: 5%;
     font-family: 'Times New Roman', Times, serif;
-} 
+}
 
 .p-button.p-button-outlined {
     height: 40px;
     margin-left: 15px;
-    top: 8px;
     background-color: #fff !important;
     color: #fc5800 !important;
     border: 1px solid #fc5800;
-} 
+}
 
- button:hover {
+button:hover {
     color: #fff;
     background-color: #fc5800;
-  } 
+}
 
-  :ng-deep .p-inputtext:enabled:hover {
+:ng-deep .p-inputtext:enabled:hover {
     border-color: #fc5800;
 }
 
-  .clear_btn:hover{
+.clear_btn:hover {
     color: #fff !important;
     background-color: #fc5800 !important;
 }
 
-.export_btn :hover{
+.export_btn :hover {
     color: #fff !important;
     background-color: #fc5800 !important;
 }
@@ -343,81 +346,94 @@ p-table {
     border-color: #fc5800;
 }
 
-/* .pi-search{
+#icon {
     position: absolute;
-    left: 70%;
-} */
+    left: 15px;
+    top: 15px;
+}
 
-.p-input-icon-left{
-    left: 76.5%;
+::ng-deep .p-input-icon-left > .p-inputtext{
+    padding: 8px 15px
 }
 
 .clear_btn:focus {
     outline: 0;
-    box-shadow:none;
-  }
-  
+    box-shadow: none;
+}
+
+@media(min-width:2560px) {
+    .logout_btn {
+        position: absolute;
+        width: 4%;
+        left: 94.5%;
+    }
+
+    ::ng-deep .p-element .ng-star-inserted {
+        min-width: 5rem !important;
+        min-height: 50px;
+    }
+
+    /* ::ng-deep .p-input-icon-left {
+        left: 89.5% !important;
+        position: absolute !important;
+    } */
+}
+
 
 @media(max-width:1440px) {
 
-    .search{
+    /* .search {
         position: relative !important;
-        right:47%;
-    }
-    .search_icon{
-        position: relative !important;
-        right: 26% !important;
-    }
-    /* .card_res {
-        height: 90%;
-        width: 93%;
-        background-color: rgb(241, 243, 242);
-        margin-top: 39px;
-        left: 49px;
+        right: 55%;
+    } */
+/* 
+    .search_icon {
+        margin-left: -55% !important;
     } */
 
-    /* .bed_no {
-        width: 15% !important;
-        position: absolute;
-    }
-
-    .room_no {
-        width: 14% !important;
-    }
-
-    .Emp_name {
-        width: 10% !important;
-
-    }
-
-    .email {
-        width: 16% !important;
-    }
-
-    .button_res {
-        width: 7%;
-        position: absolute;
-        right:60px;
-    }
-
-    .dept {
-        width: 16% !important;
-    }
-
-    .start_date {
-        width: 10% !important;
-    }
-
-    .end_date {
-        width: 10% !important;
+    /* .p-input-icon-left {
+        left: 90.5% !important;
+        position: absolute !important;
     } */
 
-    .export_btn{
+    .export_btn {
         width: 7%;
     }
+/* 
+    .logout_btn {
+        width: 7%;
+        left: 90.5%;
+    } */
 
-    .p-input-icon-left{
-        left: 75%;
+    ::ng-deep .p-datatable-thead {
+        height: 50%;
+        width: 100%;
+    }
+}
+
+@media(max-width:1024px) {
+
+
+    .side_bar {
+        height: 100%;
+    }
+
+    /* .btn_res2 {
+        width: 10%;
+        position: absolute;
+
+    } */
+
+    ::ng-deep .search_top {
+        right: 72%;
+    }
+
+    /* ::ng-deep .p-input-icon-left {
+        right: -17% !important;
+    } */
+
+    ::ng-deep .export {
+        width: 10% !important;
     }
 }
 
@@ -426,20 +442,23 @@ p-table {
         height: 100%;
     }
 
-    .search_res {
-        margin-right: 10px !important;
+    .search {
+        margin-left: -4px;
     }
+}
 
+     .search_res {
+        margin-right: 10px !important;
+    } 
+ 
     .search_icon {
         margin-left: -11px !important;
 
-    }
+    } 
 
     .btn_res {
-        left: -60px !important;
-        width: 12% !important;
-        top: 14px;
-        position: absolute !important;
+        width: 13% !important;
+        margin-left: -5%;
     }
 
     .card_res2 {
@@ -454,7 +473,6 @@ p-table {
         position: absolute;
         bottom: -2px;
     }
-}
 
 @media(max-width:820px) {
 
@@ -477,10 +495,10 @@ p-table {
         position: absolute;
     }
 
-    .btn_res3 {
+    /* .btn_res3 {
         width: 12% !important;
         left: -89px !important;
-    }
+    } */
 }
 
 @media(max-width:1024px) {
@@ -497,9 +515,10 @@ p-table {
     } */
 
     .btn_res2 {
-        width: 9%;
+        width: 10%;
         position: absolute;
-        left: -58px;
+        left: 88%;
+    
     }
 
     /* .room_no1{

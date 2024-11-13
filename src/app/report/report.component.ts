@@ -8,7 +8,8 @@ import { ExcelServiceService } from '../excel-service.service';
 import { DatePipe } from '@angular/common';
 import * as $ from 'jquery';
 import { Router } from '@angular/router';
-
+import * as fileSaver from 'file-saver';
+import * as Excel from 'exceljs';
 
 type AOA = any[][];
 @ViewChild('p-calendar')
@@ -43,41 +44,6 @@ totalCount:any;
 
     this.showreportdata();
 
-
-
-
-    // this.customerService.getReportdata(data).subscribe((customers: any) => {
-    //   console.log(customers);
-
-    //   this.employeeData = this.employeeData.data;
-    //   this.loading = false;
-
-    //   this.customer.forEach(
-    //     (        customer: { date: string | number | Date; }) => (customer.date = new Date(customer.date))
-    //   );
-    // });
-
-    // this.representatives = [
-    //   { name: "Amy Elsner", image: "amyelsner.png" },
-    //   { name: "Anna Fali", image: "annafali.png" },
-    //   { name: "Asiya Javayant", image: "asiyajavayant.png" },
-    //   { name: "Bernardo Dominic", image: "bernardodominic.png" },
-    //   { name: "Elwin Sharvill", image: "elwinsharvill.png" },
-    //   { name: "Ioni Bowcher", image: "ionibowcher.png" },
-    //   { name: "Ivan Magalhaes", image: "ivanmagalhaes.png" },
-    //   { name: "Onyama Limba", image: "onyamalimba.png" },
-    //   { name: "Stephen Shaw", image: "stephenshaw.png" },
-    //   { name: "XuXue Feng", image: "xuxuefeng.png" }
-    // ];
-
-    // this.statuses = [
-    //   { label: "Unqualified", value: "unqualified" },
-    //   { label: "Qualified", value: "qualified" },
-    //   { label: "New", value: "new" },
-    //   { label: "Negotiation", value: "negotiation" },
-    //   { label: "Renewal", value: "renewal" },
-    //   { label: "Proposal", value: "proposal" }
-    // ];
   }
   ngAfterViewInit() {
    
@@ -89,11 +55,10 @@ totalCount:any;
   //   })
   // }
 
+  // to filter the login date
   loggedIn() {
     this.showreportdata();
     // console.log(this.value);
-
-
     setTimeout(() => {
       let a = this.datePipe.transform(this.value, "yyyy-MM");
       let out: any = [];
@@ -109,6 +74,8 @@ totalCount:any;
     }, 1000);
   }
 
+
+// to filter the logout date
   loggedOut() {
     this.showreportdata();
 
@@ -128,6 +95,8 @@ totalCount:any;
     }, 1000);
 
   }
+
+  // show data in the table
   showreportdata() {
     this.customerService.getReportdata({}).subscribe((res: any) => {
 
@@ -149,17 +118,17 @@ totalCount:any;
       console.log(this.totalCount);
       // console.log(this.employeeData);
     })
-
   }
 
+  // clear the entered data
   clear(table: Table) {
     table.clear();
     this.showreportdata();
     this.resetdate();
-
   }
 
 
+  // to export the file in excel 
   onFileChange(evt: any) {
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(evt.target);
@@ -183,6 +152,39 @@ totalCount:any;
 
 
   export(): void {
+
+    // to make the space in excel columns
+    var options = {
+      filename: './streamed-workbook.xlsx',
+      useStyles: true,
+      useSharedStrings: true
+    };
+
+    let workbook = new Excel.Workbook();
+
+    var worksheet = workbook.addWorksheet('My Sheet',);
+    worksheet.columns = [
+      { header: 'Name', key: 'name', width: 30 },
+      { header: 'Email', key: 'email', width: 30},
+      { header: 'Department', key: 'deptName', width: 20},
+      { header: 'RoomNumber', key: 'roomNumber', width: 15,},
+      { header: 'BedNumber', key: 'bedNumber', width: 15, },
+      { header: 'LoggedInDate', key: 'loggedInDate', width: 20, style: { numFmt: 'dd/mm/yyyy' } },
+      { header: 'loggedOutDate', key: 'loggedOutDate', width: 20, style: { numFmt: 'dd/mm/yyyy' } },
+    ];
+
+   this.employeeData.forEach((i:any)=>{
+   console.log(i);
+   worksheet.addRow(i);
+})
+    let fileName = "reportJS.xlsx";
+    const excelBuffer: any = workbook.xlsx.writeBuffer();
+    workbook.xlsx.writeBuffer()
+      .then(function (buffer: any) {
+        // done buffering
+        const data: Blob = new Blob([buffer], { type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        fileSaver.saveAs(data, fileName);
+      });
 
     this.employeeData.forEach((item: any) => {
       this.data.push(Object.values(item))

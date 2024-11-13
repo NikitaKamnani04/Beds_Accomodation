@@ -43,7 +43,7 @@
 
 .form-rounded {
   border-radius: 1.5rem;
-  width: 40%;
+  width: 43%;
   background-color:
     #f3f3f3;
   border: none;
@@ -52,7 +52,7 @@
 
 input,
 textarea {
-  padding-left: 38px;
+  padding-left: 50px;
   border-color: transparent;
   border-radius: 0px;
 
@@ -82,7 +82,7 @@ textarea {
 .icon-eye {
   position: relative;
   float: right;
-  margin-right: 32%;
+  margin-right: 31%;
   margin-top: -25px;
 }
 
@@ -95,22 +95,30 @@ textarea {
 }
 
 .remember-me {
-  position: relative;
+  position: relative  ;
   left: 31%;
   font-weight: bold;
 }
 
 .forgot-password {
-  position: relative;
+  position: absolute;
   right: 30%;
+  cursor: pointer;
 }
 
-.sign-in {
+.sign-in .btn {
   border-radius: 1.5rem;
   background-color:
-    #fc5800;
-  border: none;
+    white;
+    color: #fc5800;
+  border-color:#fc5800;
 font-weight: bold;
+width: 360px;
+}
+
+.sign-in .btn:hover{
+  background-color: #fc5800;
+  color: white;
 }
 
 .before-or {
@@ -119,7 +127,6 @@ font-weight: bold;
   top: 30px;
   left: 31%;
   color: 1px solid #D3D0C6;
-
 }
 
 .after-or {
@@ -148,9 +155,24 @@ input[type="checkbox"] {
   accent-color:  #0075ff;
 }
 
-.btn:focus {
+.sign-in .btn:focus {
   outline: 0;
   box-shadow:none;
+}
+
+
+@media(min-width:2560px)
+{
+  input,
+textarea {
+  padding-left: 60px;
+  border-color: transparent;
+  border-radius: 0px;
+}
+
+.sign-in .btn{
+  width: 550px;
+}
 }
 
 @media (max-width:1440px) {
@@ -167,12 +189,21 @@ input[type="checkbox"] {
     bottom: 27px;
     left: 58%;
   }
+
+  .sign-in .btn:focus {
+    outline: 0;
+    box-shadow:none;
+  }
+
+  .sign-in .btn{
+    width: 300px;
+  }
 }
 
 @media(max-width:1024px) {
   .form-rounded {
     border-radius: 1.5rem;
-    width: 58%;
+    width: 58.8%;
     background-color:
       #f3f3f3;
     border: none;
@@ -202,17 +233,13 @@ input[type="checkbox"] {
   .forgot-password {
     position: relative;
     right: 22%;
+    color: black;
   }
 
-  .sign-in {
-    /* border-radius: 1.5rem; */
-    background-color: #fc5800;
-    border: none;
-    width: 290px;
-    /* position: relative;
-    right: 34px; */
+  .sign-in .btn{
+    width: 285px;
   }
-
+  
   .before-or {
     width: 15%;
     position: relative;
@@ -289,6 +316,11 @@ input[type="checkbox"] {
     left: 65%;
   }
 
+  .sign-in .btn{
+    width: 285px;
+  }
+  
+
 }
 
 @media(max-width:425px)
@@ -335,7 +367,7 @@ input[type="checkbox"] {
     .remember-me {
       /* width: 400px; */
       position: relative;
-      left: 2%;
+      left: 5%;
     }
   
     .forgot-password {
@@ -373,6 +405,12 @@ input[type="checkbox"] {
       position: relative;
       left: 40px;
     }
+
+    .sign-in .btn{
+      width: 290px;
+      margin-left: 85px;
+    }
+    
   
   }
 
@@ -418,4 +456,23 @@ input[type="checkbox"] {
       right: -100px;
     }
 
+    .sign-in .btn{
+      width: 290px;
+      margin-left: 20%;
+    }
+    
+  
+  }
+
+  @media(max-width:320px)
+  {
+     .form-rounded{
+      width: 260px;
+     }
+
+     .sign-in .btn{
+      width: 250px;
+      /* margin-left: 20%; */
+    }
+    
   }

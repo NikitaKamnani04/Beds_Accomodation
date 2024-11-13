@@ -15,5 +15,15 @@ export class LoginService {
     return this.http.post(environment.API+'/empLogin',data);
   }
 
+  forgotPassword(data:any)
+  {
+    return this.http.post(environment.API+'/forgotPassword',data);
+  }
+
+  resetpassword(data:any)
+  {
+    return this.http.post(environment.API+'/resetPassword',data);
+  }
+
 
 }

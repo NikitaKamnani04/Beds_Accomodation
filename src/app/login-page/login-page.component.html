@@ -26,9 +26,12 @@
 
 
         <div class="form-group">
-          <span><input type="text" class="form-control form-rounded mx-auto mt-5" formControlName="email" id="email"
+          <span><input type="text" class="form-control form-rounded mx-auto mt-5 " formControlName="email" id="email"
               name="email" placeholder="Email" ></span>
           <span class="icon fa fa-envelope"></span>
+          <div class="invalid-feedback">
+            Please enter email.
+          </div>
         </div>
 
         <div class="form-group">
@@ -36,6 +39,9 @@
               class="form-control form-rounded mx-auto mt-4" formControlName="password" id="password" name="password" 
               placeholder="Password" required></span>
           <span class="icon fa fa-lock fa-lg"></span>
+          <div class="invalid-feedback">
+            Please enter password.
+          </div>
 
           <i class="icon-eye fa fa-eyeIcon" [ngClass]="{
         'fa-eye-slash': !FieldTextType,
@@ -52,14 +58,17 @@
 
           </div>
 
-          <!-- <div class="form-group mt-3 forgot-password">
-          <span class="ms-1" style="color: 
-#929292;"><label for=""><u>Forgot Password?</u></label></span>
-        </div> -->
+          <div class="form-group mt-3 forgot-password">
+          <span class="ms-1"> <a href="" class="text-dark" routerLink="/forgotpassword">Forgot Password?</a></span>
+        </div>
         </div>
 
-        <div class="d-grid col-lg-5 mx-auto mt-4 sign-in">
-          <button class="btn text-white fw-bold" type="submit" value="Login" (click)="loginEmployee()">Sign in</button>
+        <!-- <div class="d-grid col-lg-5 mx-auto mt-4 sign-in">
+          <button class="btn fw-bold" type="submit" value="Login" (click)="loginEmployee()">Sign in</button>
+        </div> -->
+
+        <div class="d-grid gap-2 col-lg-5 mx-auto justify-content-center mt-4 sign-in" >
+          <button class="btn btn-success" type="submit"  (click)="loginEmployee()">Sign in</button>
         </div>
 
         <!-- <div class="text-center mt-4">

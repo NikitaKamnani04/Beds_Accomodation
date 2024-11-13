@@ -27,14 +27,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import {PaginatorModule} from 'primeng/paginator';
-
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { NgxOtpInputModule } from 'ngx-otp-input';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    ReportComponent
+    ReportComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import {PaginatorModule} from 'primeng/paginator';
     PaginatorModule,
     ToastModule,
     BrowserAnimationsModule,
-  
+    NgxOtpInputModule
+
  
   ],
   providers: [],

@@ -4,6 +4,7 @@ import { LoginService } from '../service/login.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+
 declare var $:any;
 @Component({
   selector: 'app-login-page',
@@ -19,6 +20,7 @@ export class LoginPageComponent implements OnInit {
   email:string="" ;
   password:string="";
   rememberMeChecked:any=false;
+
  
   constructor(private loginService:LoginService,private messageService:MessageService,private router:Router,private _cookieService:CookieService) {
    
@@ -55,8 +57,8 @@ console.log(this.rememberMeChecked);
   }
 
 
+  
   onLoggedIn(){
-
   }
   
   toggleFieldTextType() {
